@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manando Hair Salon</title>
+  <style>
+    html {
+  scroll-behavior: smooth;
+    }
+    :root {
+      --primary: #7FFFD4;
+      --primary-dark: #f08080;
+      --secondary: #2E2E2E;
+      --light: #F8F8F8;
+      --gray: #777777;
+      --dark: #000000;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      margin: 0;
+      padding: 40px;
+      color: var(--dark);
+      background-color: var(--light);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .logo::after {
+      content: ".";
+      color: var(--primary);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.20s;
+      position: relative;
+    }
+    nav a:hover {
+      color: var(--primary);
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    hr {
+      border: none;
+      border-top: 1.5px solid #e0e0e0;
+      margin: 30px 0;
+    }
+
+    .hero {
+      margin-bottom: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .hero h2 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero h1 {
+      font-size: 40px;
+      margin: 0 0 20px;
+    }
+    .hero h1 span {
+      color: var(--primary-dark);
+    }
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+      margin-right: 10px;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+    .btn-secondary {
+      background: var(--secondary);
+      color: white;
+    }
+    .btn-secondary:hover {
+      opacity: 0.8;
+    }
+
+    .profile img {
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .call {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: var(--primary-dark);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .call:hover {
+      background: var(--secondary);
+    }
+    #hairstyles {
+  margin: 60px 0;
+    }
+
+        #hairstyles h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--secondary);
+    }
+
+        .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+    }
+
+        .gallery img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+    }
+
+        .gallery img:hover {
+  transform: scale(1.05);
+    }
+
+        #housecall-form input, 
+    #housecall-form button {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    }
+
+    #housecall-form button {
+    background: var(--primary-dark);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    }
+
+    #housecall-form button:hover {
+    background: var(--secondary);
+    }
+
+                #reviews {
+  margin: 60px 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+#reviews h2, #reviews h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#reviews-list p {
+  background: #f8f8f8;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+#review-form input, 
+#review-form textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#review-form button {
+  background: var(--primary-dark);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#review-form button:hover {
+  background: var(--secondary);
+}
+
+
+  </style>
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbyO4i3nl7q1MBpW8xzDTsrgZz4PipeJpmME6AtMexwCWejXolgvv0RpKL-Zb03UTBPnyQ/exec"; // paste your URL here
+
+// Load reviews from Google Sheets
+async function loadReviews() {
+  let response = await fetch(scriptURL);
+  let reviews = await response.json();
+  let container = document.getElementById("reviews-list");
+  container.innerHTML = "";
+
+  reviews.forEach(r => {
+    let p = document.createElement("p");
+    p.innerHTML = `<strong>${r.name}</strong>: "${r.review}" <br><small>${new Date(r.date).toLocaleString()}</small>`;
+    container.appendChild(p);
+  });
+}
+
+// Submit new review
+document.getElementById("review-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  let name = document.getElementById("name").value;
+  let message = document.getElementById("message").value;
+
+  await fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify({ name: name, review: message })
+  });
+
+  document.getElementById("review-form").reset();
+  loadReviews(); // reload reviews
+});
+
+// Load reviews when page opens
+loadReviews();
+
+
+
+// WhatsApp number (replace with your real number, format: countrycode + number, no spaces)
+const whatsappNumber = "27607628381"; // example: +27 71 234 5678 → 27712345678
+
+// Handle form submit
+document.getElementById("housecall").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let name = document.getElementById("hc-name").value;
+  let address = document.getElementById("hc-address").value;
+  let service = document.getElementById("hc-service").value;
+
+  // Create WhatsApp message
+  let message = `Hello, I am *${name}*.\nI would like to request a house call.\n\n📍 Address: ${address}\n💈 Service: ${service}`;
+  
+  // Encode message for URL
+  let url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+  // Open WhatsApp
+  window.open(url, "_blank");
+});
+</script>
+
+</head>
+<body>
+  <header>
+    <div class="logo">MANANDO BARBERSHOP</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+    
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#location">Location</a></li>
+      </ul>
+    </nav>
+  </header>
+  <hr>
+
+  <section class="hero">
+    <div class="content">
+      <h2><span>LOOK FRESH</span></h2>
+      <h1>LOOK <span>CLEANER</span> EVERYDAY</h1>
+      <p>We are passionate about your satisfaction!<br/>
+      Discover Legendary Hair Cuts</p>
+
+      <div class="buttons">
+        <a href="#hairstyles" class="btn btn-primary" target="_blank">Explore Hair Styles</a>
+        <a href="https://wa.me/27607628381" class="btn btn-secondary">Make an Appointment</a>
+      </div>
+    </div>
+    <div class="profile">
+      <img src="mm.png" width="300px" alt="Profile"/>
+       <button class="call" onclick="document.getElementById('housecall-form').style.display='block'">
+    Request House Call
+  </button>
+
+    </div>
+  </section>
+  <!-- House Call Form -->
+<div id="housecall-form" style="display:none; margin-top:20px;">
+  <h3>Request a House Call</h3>
+  <form id="housecall">
+    <input type="text" id="hc-name" placeholder="Your Name" required><br><br>
+    <input type="text" id="hc-address" placeholder="Your Address" required><br><br>
+    <input type="text" id="hc-service" placeholder="Service Needed (e.g., Haircut, Shave)" required><br><br>
+    <button type="submit">Send via WhatsApp</button>
+  </form>
+</div>
+
+
+  <section id="reviews">
+  <h2>Customer Reviews</h2>
+
+  <!-- Where reviews will appear -->
+  <div id="reviews-list"></div>
+
+  <!-- Add new review -->
+  <h3>Leave a Review</h3>
+  <form id="review-form">
+    <input type="text" id="name" placeholder="Your Name" required><br><br>
+    <textarea id="message" placeholder="Write your review..." required></textarea><br><br>
+    <button type="submit">Submit Review</button>
+  </form>
+    </section>
+
+    <section id="hairstyles">
+  <h2>Our Hair Styles</h2>
+  <div class="gallery">
+    <img src="cut.jpg" alt="High Fade">
+    <img src="tapp.jpg" alt="Tapper fade">
+    <img src="short.jpg" alt="short">
+  </div>
+</section>
+
+
+    <footer style="background: #2E2E2E; color: white; padding: 40px; margin-top: 50px;">
+  <div id="about">
+    <h2>About Us</h2>
+    <p>
+      At Manando Barbershop, we are passionate about making you look sharp and feel confident.  
+      With years of experience, our skilled barber specialize in classic and modern cuts,  
+      hot towel shaves, and legendary customer service.
+    </p>
+  </div>
+
+  <hr style="margin: 30px 0; border: none; border-top: 1px solid #555;">
+
+  <div id="location">
+    <h2>Location</h2>
+    <p>
+      📍 Kubjana Village || Next to Dinoko Tarven
+      📞 Call: +27 60 762 8381  
+      ⏰ Mon – Sat: 9am – 7pm | Sun: Closed
+    </p>
+
+    <!-- Google Map Embed -->
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3455!2d30.291479636680098!3d-23.696017949988548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sza!4v1699999999999" 
+      width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <p style="text-align:center; margin-top:30px; font-size:14px; color:#aaa;">
+    © 2025 Manando Barbershop. All rights reserved.
+  </p>
+</footer>
+
+
+</body>
+</html>
